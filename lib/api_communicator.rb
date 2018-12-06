@@ -2,6 +2,7 @@ def connect(endpoint)
   api_key="ee3263e25720400b8457823cccb99510"
 
   current_page='https://api.football-data.org/v2/' + endpoint
+  puts current_page
   response = RestClient::Request.execute(
      :method => :get,
      :url => current_page,
@@ -53,6 +54,30 @@ end
 # load all matches in CL, including Preliminary matches
 def load_all_matches_in_CL
   connect("competitions/CL/matches")
+end
+
+def update_matches
+  saved=nil
+  match_check=Match.where(status: "FINISHED").order(:match_date).last
+  match_day=match_check.match_day+1
+  endpoint="competitions/2001/matches?matchday=#{match_day}"
+  updated_matches=connect(endpoint)
+  downloaded_match_status=updated_matches["matches"][0]["status"]
+  binding.pry
+  if downloaded_match_status=="SCHEDULED"
+    record=UpdateRecord.new(match_day: match_day, number_of_match_updates: 0, saved_to_database: false)
+    record.save
+    saved=false
+  else
+    record=UpdateRecord.new(match_day: match_day, number_of_match_updates: 0, saved_to_database: true)
+    updated_matches["matches"].each do |match|
+      record.number_of_match_updates+=1
+      save_match_from_hash(match)
+    end
+    record.save
+    saved=true
+  end
+  saved
 end
 
 # # load all group and (theoretically) post-group matches once scheduled

@@ -16,6 +16,7 @@ class Team < ActiveRecord::Base
   end
 
   def info
+    puts "#{self.name}"
     puts "Team colors: #{self.colors}"
     puts "Team venue: #{self.venue}"
     puts "Founded: #{self.founded}"
@@ -29,5 +30,11 @@ class Team < ActiveRecord::Base
     ties=self.finishedmatches.select{|match|match.winner==nil}.count
     "#{wins}-#{losses}-#{ties}"
   end
+
+  def points
+    wins = self.record.split('-')[0].to_i
+    (wins * 3) + self.record.split('-')[2].to_i
+  end
+
 
 end

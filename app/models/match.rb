@@ -51,11 +51,11 @@ class Match < ActiveRecord::Base
 
   def match_object_formatted
     puts ""
-    puts "#{self.match_date}"
+    puts "#{self.match_date.in_time_zone('EST').strftime("%A %B %d, %Y at %I:%M %p")}"
     if self.status == "FINISHED"
-      puts "#{self.home_team_name}: #{self.home_team_score} v. #{self.away_team_name}: #{self.away_team_score}"
+      puts "#{self.home_team_name} (#{self.hometeam.record}): #{self.home_team_score} v. #{self.away_team_name} (#{self.awayteam.record}): #{self.away_team_score}"
     else
-      puts "#{self.home_team_name} v. #{self.away_team_name}"
+      puts "#{self.home_team_name} (#{self.hometeam.record}) v. #{self.away_team_name} (#{self.awayteam.record})"
     end
     puts " "
   end
@@ -87,5 +87,6 @@ class Match < ActiveRecord::Base
       nil
     end
   end
+
 
 end # end of Match class

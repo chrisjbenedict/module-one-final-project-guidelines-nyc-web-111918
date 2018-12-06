@@ -21,4 +21,5 @@ class Player < ActiveRecord::Base
     self.most_common_nationalities.first
   end
 
+
 end
