@@ -17,7 +17,7 @@ The UEFA Champions League is an annual tournament that brings together all the b
 
 ### Installation Instructions
 
-#####a Already sold? We're not surprised! Here's how to install Champs:
+##### Already sold? We're not surprised! Here's how to install Champs:
 
 1. Open your terminal and clone the repository from github.
 2. If not already installed, install ruby.
