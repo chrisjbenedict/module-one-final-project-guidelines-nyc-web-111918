@@ -63,7 +63,6 @@ def update_matches
   endpoint="competitions/2001/matches?matchday=#{match_day}"
   updated_matches=connect(endpoint)
   downloaded_match_status=updated_matches["matches"][0]["status"]
-  binding.pry
   if downloaded_match_status=="SCHEDULED"
     record=UpdateRecord.new(match_day: match_day, number_of_match_updates: 0, saved_to_database: false)
     record.save

@@ -8,12 +8,3 @@ class CreateUpdateRecordsTable < ActiveRecord::Migration[5.2]
     end
   end
 end
-
-
-#Checks most recent completed game and gets match day
-
-#Pulls matches for match_day+1
-
-#Checks status of pulled matches
-
-#If completed, update
