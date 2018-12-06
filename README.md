@@ -6,7 +6,7 @@ The UEFA Champions League is an annual tournament that brings together all the b
 
 ### What can I do with Champs?
 
-##### Champs is a one-stop-commnand-line-shop for the Champions League Info you need!
+#### Champs is a one-stop-commnand-line-shop for the Champions League Info you need!
 
 * Find all match results for the Champions League to stay up-to-date.
 * Find all upcoming matches so you never miss a minute of the action.
@@ -17,7 +17,7 @@ The UEFA Champions League is an annual tournament that brings together all the b
 
 ### Installation Instructions
 
-##### Already sold? We're not surprised! Here's how to install Champs:
+#### Already sold? We're not surprised! Here's how to install Champs:
 
 1. Open your terminal and clone the repository from github.
 2. If not already installed, install ruby.
