@@ -50,10 +50,20 @@ class Match < ActiveRecord::Base
   end
 
   def match_object_formatted
+    if self.winner==nil
+      home_color=:blue
+      away_color=:blue
+    elsif self.winner.name==self.home_team_name
+      home_color=:green
+      away_color=:red
+    else
+      home_color=:red
+      away_color=:green
+    end
     puts ""
     puts "#{self.match_date.in_time_zone('EST').strftime("%A %B %d, %Y at %I:%M %p")}"
     if self.status == "FINISHED"
-      puts "#{self.home_team_name} (#{self.hometeam.record}): #{self.home_team_score} v. #{self.away_team_name} (#{self.awayteam.record}): #{self.away_team_score}"
+      puts "#{self.home_team_name} (#{self.hometeam.record}): #{self.home_team_score}".colorize(home_color) + " v. " + "#{self.away_team_name} (#{self.awayteam.record}): #{self.away_team_score}".colorize(away_color)
     else
       puts "#{self.home_team_name} (#{self.hometeam.record}) v. #{self.away_team_name} (#{self.awayteam.record})"
     end
