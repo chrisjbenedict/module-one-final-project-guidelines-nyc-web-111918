@@ -40,31 +40,4 @@ class Team < ActiveRecord::Base
     load_team_by_id(self.api_id)["crestUrl"]
   end
 
-  # def print_url
-  #   url = load_image
-  #   svg_str=open(url){|f| f.read }
-  #
-  #   def convert_svg_to_png(str)
-  #     img, data = Magick::Image.from_blob(str) {
-  #       self.format = 'SVG'
-  #       self.background_color = 'transparent'
-  #     }
-  #     img.to_blob {
-  #       self.format = 'PNG'
-  #     }
-  #   end
-  #
-  #   image_string = convert_svg_to_png(svg_str)
-  #   img=Magick::Image.from_blob(image_string)[0]
-  #
-  #   img = img.change_geometry("25") {|cols, rows, img| img.resize!(cols, rows)}
-  #
-  #   img.each_pixel do |pixel, col, row|
-  #     c = [pixel.red, pixel.green, pixel.blue].map { |v| 256 * (v / 65535.0) }
-  #     pixel.opacity == 65535 ? print("  ") : print("  ".bg c)
-  #     puts if col >= img.columns - 1
-  #   end
-  # end
-
-
 end
